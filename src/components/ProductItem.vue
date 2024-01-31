@@ -1,6 +1,6 @@
 <template>
     <div class="product-item">
-        <img :src="`http://localhost:3000${product.imageUrl}`" :alt="product.name" loading="lazy">
+        <img :src="`https://server-vue-store.vercel.app${product.imageUrl}`" :alt="product.name" loading="lazy">
         <h3 class="product-name">{{ product.name }}</h3>
         <p class="product-price">Rp.{{ product.price }}</p>
         <RouterLink :to="{name:'product-detail', params:{id:product.code}}">

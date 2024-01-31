@@ -4,7 +4,7 @@
         <div id="page-wrap" v-else>
           <h4 v-show="notif.value" class="notif" :class="{ 'green': notif.msg === 'Item Added Sucessfully', 'reds': notif.msg === 'Item Already Added' }">{{ notif.msg }}</h4>
             <div id="img-wrap">
-                <img :src="`http://localhost:3000${product.imageUrl}`" :alt="product.name">
+                <img :src="`https://server-vue-store.vercel.app${product.imageUrl}`" :alt="product.name">
             </div>
             <div id="product-details">
                 <h1>{{ product.name }}</h1>
@@ -43,7 +43,7 @@
   });
 
   const addToCart = async (code: string) => {
-    await axios.post('http://localhost:3000/api/orders/user/1/add', {
+    await axios.post('https://server-vue-store.vercel.app/api/orders/user/1/add', {
       product: code
     }).then((datas) => {
       if (datas.data.modifiedCount > 0) {
@@ -65,7 +65,7 @@
   onMounted(async () => {
   try {
     productId.value = route.params.id;
-    const response = await axios.get(`http://localhost:3000/api/products/${productId.value}`);
+    const response = await axios.get(`https://server-vue-store.vercel.app/api/products/${productId.value}`);
     product.value = response.data;
   } catch (error) {
     console.error('Error fetching products:', error);

@@ -28,14 +28,14 @@ const totalPrice= ref<Number>(0);
 const products = ref<Product[]>([])
 
 async function takeData() {
-  const response = await axios.get(`http://localhost:3000/api/orders/user/1`);
+  const response = await axios.get(`https://server-vue-store.vercel.app/api/orders/user/1`);
   products.value = response.data[0].products;
   totalPrice.value = products.value.reduce((total, item) => total + Number(item.price), 0)
 }
 
 async function removeItemCart(code: string) {
   try {
-    await axios.delete(`http://localhost:3000/api/orders/user/1/product/${code}`).then((e) => {
+    await axios.delete(`https://server-vue-store.vercel.app/api/orders/user/1/product/${code}`).then((e) => {
       console.log(e);
     });
     takeData()
